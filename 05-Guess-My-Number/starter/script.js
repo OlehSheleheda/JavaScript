@@ -16,15 +16,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent = `Please enter your number`;
   } else if (guessedNumber === randomNumber) {
     document.querySelector('body').style.backgroundColor = '#60b347';
-    if (score > 1) {
-      document.querySelector('.message').textContent = `Right!`;
-      score--;
-      document.querySelector('.score').textContent = score;
-      highscore++;
+    document.querySelector('.message').textContent = `Right!`;
+
+    if (score > highscore) {
+      highscore = score;
       document.querySelector('.highscore').textContent = highscore;
-    } else {
-      document.querySelector('.message').textContent = `Game over!`;
-      document.querySelector('.score').textContent = 0;
     }
   } else if (guessedNumber < randomNumber) {
     if (score > 1) {
@@ -52,9 +48,7 @@ document.querySelector('.again').addEventListener('click', function () {
   console.log(randomNumber);
   score = 20;
   document.querySelector('.score').textContent = score;
-  highscore = 0;
-  document.querySelector('.highscore').textContent = highscore;
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.message').textContent = `Start guessing...`;
-  document.querySelector('.guess').value = null;
+  document.querySelector('.guess').value = '';
 });
